@@ -1,0 +1,106 @@
+/* style/modal-enhancements.css - Améliorations pour les modales */
+
+/* Modal avec bandeau d'image */
+.recipe-detail-modal .modal-content {
+    max-width: 800px;
+    padding: 0;
+    overflow: hidden;
+}
+
+.recipe-image-banner {
+    position: relative;
+    height: 180px;
+    /* Réduit de 250px à 180px */
+    overflow: hidden;
+}
+
+.banner-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(0.7);
+    /* Assombrit légèrement pour la lisibilité */
+}
+
+.banner-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+    padding: 1.5rem 2rem 1rem;
+    /* Réduit le padding */
+    color: white;
+}
+
+.banner-overlay h2 {
+    margin: 0;
+    font-size: 1.8rem;
+    /* Réduit de 2.2rem à 1.8rem */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+}
+
+.modal-close-banner {
+    position: absolute;
+    top: 0.75rem;
+    /* Ajusté pour la nouvelle hauteur */
+    right: 1rem;
+    background: rgba(0, 0, 0, 0.6);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 35px;
+    /* Légèrement plus petit */
+    height: 35px;
+    cursor: pointer;
+    font-size: 1.2rem;
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+}
+
+.modal-close-banner:hover {
+    background: rgba(0, 0, 0, 0.8);
+    transform: scale(1.1);
+}
+
+/* Modal formulaire amélioré */
+.enhanced-form-modal .modal-content {
+    max-width: 1000px;
+    max-height: 95vh;
+    padding: 0;
+    background: none;
+    box-shadow: none;
+}
+
+.enhanced-form-modal .modal-body {
+    padding: 0;
+}
+
+/* Ajustements responsive pour les modales */
+@media (max-width: 768px) {
+    .recipe-image-banner {
+        height: 150px;
+        /* Encore plus petit sur mobile */
+    }
+
+    .banner-overlay {
+        padding: 1rem 1.5rem 0.75rem;
+    }
+
+    .banner-overlay h2 {
+        font-size: 1.5rem;
+    }
+
+    .enhanced-form-modal .modal-content {
+        margin: 0.5rem;
+        max-height: calc(100vh - 1rem);
+    }
+
+    .modal-close-banner {
+        top: 0.5rem;
+        right: 0.75rem;
+        width: 30px;
+        height: 30px;
+        font-size: 1rem;
+    }
+}

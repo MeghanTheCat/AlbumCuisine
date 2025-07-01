@@ -1,22 +1,29 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Album Cuisine</title>
     <link rel="stylesheet" href="./style/main.css">
     <link rel="stylesheet" href="./style/style.css">
+    <link rel="stylesheet" href="./style/modals.css">
+    <link rel="stylesheet" href="./style/form.css">
+    <link rel="stylesheet" href="./style/modal-enhancements.css">
     <link href="https://fonts.googleapis.com/css2?family=Playwrite+TZ:wght@100..400&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Playwrite+TZ:wght@100..400&family=Sniglet:wght@400;800&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playwrite+TZ:wght@100..400&family=Sniglet:wght@400;800&display=swap"
+        rel="stylesheet">
     <script src="./js/main.js" defer></script>
 </head>
+
 <body>
     <header>
         <div class="container">
-            <div class="header-container">
+            <div class="header-content">
                 <h1>Mes Recettes</h1>
-                <button class="add-btn" onclick="addRecipe()">
-                    Ajouter une recette
+                <button class="add-btn">
+                    ➕ Ajouter une recette
                 </button>
             </div>
         </div>
@@ -24,48 +31,26 @@
 
     <div class="container">
         <div class="nav-tabs">
-            <button class="tab-btn active" onclick="switchTab('all')">
+            <button class="tab-btn active" data-tab="all">
                 Toutes les recettes
             </button>
-            <button class="tab-btn" onclick="switchTab('cuisine')">
-                Cuisine
+            <button class="tab-btn" data-tab="cuisine">
+                🍽️ Cuisine
             </button>
-            <button class="tab-btn" onclick="switchTab('cocktails')">
-                Cocktails
+            <button class="tab-btn" data-tab="cocktails">
+                🍹 Cocktails
             </button>
         </div>
 
         <div class="search-container">
             <div class="search-icon">🔍</div>
-            <input type="text" class="search-bar" placeholder="Rechercher une recette..." onkeyup="searchRecipes(this.value)">
+            <input type="text" class="search-bar" placeholder="Rechercher une recette...">
         </div>
 
         <div class="recipes-grid" id="recipesGrid">
-            <div class="recipe-card" data-category="cuisine">
-                <div class="recipe-image">🥘</div>
-                <div class="recipe-content">
-                    <h3 class="recipe-title">Risotto aux champignons</h3>
-                    <p class="recipe-description">Un délicieux risotto crémeux aux champignons de saison, parfait pour un super diner</p>
-                    <div class="recipe-meta">
-                        <div class="recipe-time">⏱️ 35 min</div>
-                        <div class="recipe-difficulty">Facile</div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="recipe-card" data-category="cocktails">
-                <div class="recipe-image">🍸</div>
-                <div class="recipe-content">
-                    <h3 class="recipe-title">Mojito Classic</h3>
-                    <p class="recipe-description">Le cocktail cubain traditionnel à base de rhum blanc, menthe fraîche et citron vert.</p>
-                    <div class="recipe-meta">
-                        <div class="recipe-time">⏱️ 5 min</div>
-                        <div class="recipe-difficulty">Facile</div>
-                    </div>
-                </div>
-            </div>
-            
+            <!-- Les recettes seront chargées dynamiquement depuis l'API -->
         </div>
     </div>
 </body>
+
 </html>

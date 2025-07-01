@@ -8,7 +8,7 @@ h1, h2, h3, h4, h5, h6 {
     font-family: Playwrite TZ, sans-serif;
 }
 
-p {
+p, span, a, li, label, button, option, select {
     font-family: Sniglet, sans-serif;
 }
 
