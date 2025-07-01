@@ -1,0 +1,27 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: Playwrite TZ, sans-serif;
+}
+
+p {
+    font-family: Sniglet, sans-serif;
+}
+
+h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+}
+
+:root {
+    --text: #0a1208;
+    --background: #f3f9f1;
+    --primary: #68b45f;
+    --secondary: #97bfce;
+    --accent: #78de5e;
+}
