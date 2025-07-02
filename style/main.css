@@ -145,6 +145,7 @@ header {
     margin: 2rem 0;
 }
 
+/* Style de base pour toutes les cartes */
 .recipe-card {
     background: white;
     border-radius: 20px;
@@ -152,6 +153,8 @@ header {
     box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
     transition: all 0.3s ease;
     cursor: pointer;
+    display: flex;
+    flex-direction: column;
 }
 
 .recipe-card:hover {
@@ -159,9 +162,9 @@ header {
     box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
 }
 
+/* Zone d'image commune */
 .recipe-image {
     height: 200px;
-    background: linear-gradient(45deg, var(--secondary), var(--accent));
     display: flex;
     align-items: center;
     justify-content: center;
@@ -171,7 +174,40 @@ header {
     overflow: hidden;
 }
 
-/* Style pour les cartes avec images */
+/* Style pour les cartes SANS image (avec emoji et fond vert) */
+.recipe-image:not(.has-image) {
+    background: linear-gradient(45deg, var(--secondary), var(--accent));
+    z-index: 1;
+}
+
+.recipe-image:not(.has-image)::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg,
+            rgba(104, 180, 95, 0.8),
+            rgba(120, 222, 94, 0.8));
+    opacity: 0.9;
+    z-index: 1;
+}
+
+/* Overlay pour le titre sur les cartes SANS image */
+.recipe-image:not(.has-image)::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+    height: 80px;
+    z-index: 2;
+    pointer-events: none;
+}
+
+/* Style pour les cartes AVEC image */
 .recipe-image.has-image {
     background: none;
     padding: 0;
@@ -191,7 +227,7 @@ header {
     transform: scale(1.05);
 }
 
-/* Overlay pour le titre sur l'image */
+/* Overlay pour le titre - TOUTES les cartes */
 .recipe-image-overlay {
     position: absolute;
     bottom: 0;
@@ -200,9 +236,10 @@ header {
     background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
     padding: 1.5rem 1.5rem 1rem;
     color: white;
-    z-index: 2;
+    z-index: 3;
 }
 
+/* Titre dans l'overlay pour TOUTES les cartes */
 .recipe-image-overlay .recipe-title {
     color: white;
     margin: 0;
@@ -212,69 +249,46 @@ header {
     line-height: 1.2;
 }
 
-/* Ajustement du contenu pour les cartes avec images */
-.recipe-card.has-image .recipe-content {
-    padding: 1rem 1.5rem 1.5rem;
+/* Style spécifique pour l'overlay des cartes AVEC image */
+.recipe-card.has-image .recipe-image-overlay {
+    background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
 }
 
-/* Le titre reste visible dans l'overlay ET le contenu pour compatibilité */
-.recipe-card.has-image .recipe-content .recipe-title {
-    display: none;
-    /* On cache celui du contenu car il est dans l'overlay */
+/* Style spécifique pour l'overlay des cartes SANS image */
+.recipe-card:not(.has-image) .recipe-image-overlay {
+    background: transparent;
+    /* Le gradient est déjà dans ::after */
 }
 
-/* Style par défaut pour les cartes sans image (emoji) */
-.recipe-image::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(45deg,
-            rgba(104, 180, 95, 0.8),
-            rgba(120, 222, 94, 0.8));
-    opacity: 0.9;
-    z-index: 1;
-}
-
-.recipe-image:not(.has-image)::before {
-    display: block;
-}
-
-.recipe-image.has-image::before {
-    display: none;
-}
-
-/* Emoji centré pour les cartes sans image */
-.recipe-image:not(.has-image) {
-    z-index: 2;
-    position: relative;
-}
-
+/* Contenu de la carte - ajustements pour uniformiser */
 .recipe-content {
-    padding: 1.5rem;
+    padding: 1rem 1.5rem 1.5rem;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
 }
 
-.recipe-title {
-    font-size: 1.3rem;
-    font-weight: 600;
-    margin-bottom: 0.5rem;
-    color: var(--text);
+/* Le titre principal dans le contenu est caché sur TOUTES les cartes maintenant */
+.recipe-content .recipe-title {
+    display: none;
 }
 
+/* Description repositionnée vers le haut */
 .recipe-description {
     color: rgba(10, 18, 8, 0.7);
     margin-bottom: 1rem;
     line-height: 1.5;
+    flex: 1;
 }
 
+/* Meta informations en bas */
 .recipe-meta {
     display: flex;
     justify-content: space-between;
     align-items: center;
     font-size: 0.9rem;
     color: var(--secondary);
+    margin-top: auto;
 }
 
 .recipe-time {

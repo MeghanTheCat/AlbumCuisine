@@ -88,39 +88,41 @@ class RecettesApp {
         if (hasImage) {
             // Carte avec image en arrière-plan
             return `
-                <div class="recipe-card has-image" data-category="${recette.categorie}" data-id="${recette.id}">
-                    <div class="recipe-image has-image">
-                        <img src="${recette.image_url}" alt="${recette.titre}">
-                        <div class="recipe-image-overlay">
-                            <h3 class="recipe-title">${recette.titre}</h3>
-                        </div>
-                    </div>
-                    <div class="recipe-content">
-                        <p class="recipe-description">${this.truncateDescription(recette.description, 120)}</p>
-                        <div class="recipe-meta">
-                            <div class="recipe-time">⏱️ ${recette.temps_preparation} min</div>
-                            <div class="recipe-difficulty">${recette.difficulte}</div>
-                        </div>
-                    </div>
-                </div>
-            `;
-        } else {
-            // Carte avec emoji (style original)
-            return `
-                <div class="recipe-card" data-category="${recette.categorie}" data-id="${recette.id}">
-                    <div class="recipe-image">
-                        ${recette.emoji}
-                    </div>
-                    <div class="recipe-content">
+            <div class="recipe-card has-image" data-category="${recette.categorie}" data-id="${recette.id}">
+                <div class="recipe-image has-image">
+                    <img src="${recette.image_url}" alt="${recette.titre}">
+                    <div class="recipe-image-overlay">
                         <h3 class="recipe-title">${recette.titre}</h3>
-                        <p class="recipe-description">${this.truncateDescription(recette.description, 120)}</p>
-                        <div class="recipe-meta">
-                            <div class="recipe-time">⏱️ ${recette.temps_preparation} min</div>
-                            <div class="recipe-difficulty">${recette.difficulte}</div>
-                        </div>
                     </div>
                 </div>
-            `;
+                <div class="recipe-content">
+                    <p class="recipe-description">${this.truncateDescription(recette.description, 120)}</p>
+                    <div class="recipe-meta">
+                        <div class="recipe-time">⏱️ ${recette.temps_preparation} min</div>
+                        <div class="recipe-difficulty">${recette.difficulte}</div>
+                    </div>
+                </div>
+            </div>
+        `;
+        } else {
+            // Carte avec emoji et même structure que les cartes avec image
+            return `
+            <div class="recipe-card" data-category="${recette.categorie}" data-id="${recette.id}">
+                <div class="recipe-image">
+                    <span style="position: relative; z-index: 2; font-size: 3rem;">${recette.emoji}</span>
+                    <div class="recipe-image-overlay">
+                        <h3 class="recipe-title">${recette.titre}</h3>
+                    </div>
+                </div>
+                <div class="recipe-content">
+                    <p class="recipe-description">${this.truncateDescription(recette.description, 120)}</p>
+                    <div class="recipe-meta">
+                        <div class="recipe-time">⏱️ ${recette.temps_preparation} min</div>
+                        <div class="recipe-difficulty">${recette.difficulte}</div>
+                    </div>
+                </div>
+            </div>
+        `;
         }
     }
 
