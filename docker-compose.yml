@@ -1,0 +1,27 @@
+version: '3.8'
+
+services:
+  album-cuisine:
+    build: .
+    container_name: album-cuisine-app
+    ports:
+      - "3000:3000"
+    volumes:
+      # Persister la base de données SQLite
+      - db_data:/app/api
+      # Persister les images uploadées  
+      - upload_data:/app/media/uploads
+    environment:
+      - NODE_ENV=production
+      - PORT=3000
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://localhost:3000"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 30s
+
+volumes:
+  db_data:
+  upload_data:

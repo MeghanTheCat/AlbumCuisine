@@ -1,0 +1,22 @@
+node_modules
+package-lock.json
+npm-debug.log
+.git
+.gitignore
+README.md
+.env
+.nyc_output
+coverage
+.cache
+.vscode
+.idea
+*.log
+.DS_Store
+Thumbs.db
+docker-compose.yml
+Dockerfile
+.dockerignore
+
+# Données locales de développement
+# api/recettes.db
+media/uploads/*

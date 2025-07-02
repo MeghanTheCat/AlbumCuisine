@@ -46,7 +46,7 @@ app.use(express.json({ limit: '10mb' }));
 app.use(express.static(path.join(__dirname, '..'))); // Servir les fichiers statiques depuis la racine
 
 // Initialisation de la base de données
-const dbPath = path.join(__dirname, 'recettes.db');
+const dbPath = path.join(__dirname, '..', 'data', 'recettes.db');
 const db = new sqlite3.Database(dbPath);
 
 // Création des tables si elles n'existent pas
